@@ -29,7 +29,6 @@ export class AcoesService {
     if(acaoA.codigo < acaoB.codigo){
       return -1;
     }
-
     return 0;
   }
 }
