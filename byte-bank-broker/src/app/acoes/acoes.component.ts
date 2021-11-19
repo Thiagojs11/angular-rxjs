@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { merge } from 'rxjs';
-import { debounceTime, filter, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 
 import { AcoesService } from './acoes.service';
 
@@ -30,6 +30,7 @@ export class AcoesComponent {
     filter(
       (valorDigitado)=> valorDigitado.length >= 3 || !valorDigitado.length
     ),
+    distinctUntilChanged(),
     switchMap((valorDigitado) => this.acoesService.getAcoes(valorDigitado))
   )
 
