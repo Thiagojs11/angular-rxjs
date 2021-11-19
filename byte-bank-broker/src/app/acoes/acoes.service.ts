@@ -11,7 +11,7 @@ export class AcoesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAcoes(){
+  public getAcoes(){
     return this.httpClient.get<AcoesAPI>('http://localhost:3000/acoes')
     .pipe(
       tap((valor) => console.log(valor)),
